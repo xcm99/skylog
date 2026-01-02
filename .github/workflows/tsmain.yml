@@ -1,0 +1,25 @@
+name: testRenew
+on:
+  schedule:
+    - cron: '0 0 * * *' # 每天凌晨 0 点运行
+  workflow_dispatch: # 支持手动触发
+
+jobs:
+  renew:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: |
+          pip install playwright requests
+          playwright install chromium
+      - name: Run Script
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          SKYBOTS_COOKIE_ACC1: ${{ secrets.SKYBOTS_COOKIE_ACC1 }}
+        run: python test.py
