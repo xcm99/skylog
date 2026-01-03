@@ -23,3 +23,10 @@ jobs:
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
           SKYBOTS_COOKIE_ACC1: ${{ secrets.SKYBOTS_COOKIE_ACC1 }}
         run: python test.py
+      - name: Commit heartbeat
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add heartbeat.txt
+          git commit -m "heartbeat" || echo "no change"
+          git push
