@@ -1,4 +1,4 @@
-name: SkyBots Auto Renew
+name: test Auto Renew
 on:
   schedule:
    - cron: "0 0 */6 * *"   # 每 6 天
