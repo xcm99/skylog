@@ -22,4 +22,4 @@ jobs:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
           SKYBOTS_COOKIE_ACC1: ${{ secrets.SKYBOTS_COOKIE_ACC1 }}
-        run: python your_script_name.py
+        run: python test.py
