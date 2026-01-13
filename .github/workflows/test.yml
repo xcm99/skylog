@@ -1,7 +1,8 @@
 name: test Auto Renew
 on:
   schedule:
-   - cron: "0 0 */6 * *"   # 每 6 天
+# 每 4 天运行一次 (UTC 时间 00:00)
+    - cron: '0 0 */4 * *'
   workflow_dispatch: # 支持手动触发
 
 jobs:
@@ -22,6 +23,7 @@ jobs:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
           SKYBOTS_COOKIE_ACC1: ${{ secrets.SKYBOTS_COOKIE_ACC1 }}
+          SKYBOTS_COOKIE_ACC2: ${{ secrets.SKYBOTS_COOKIE_ACC2 }}
         run: python test.py
       - name: Commit heartbeat
         run: |
